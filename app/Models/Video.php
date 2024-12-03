@@ -7,6 +7,15 @@ use App\Models\User;
 
 class Video extends Model
 {
+    protected $fillable = [
+        'title',
+        'url',
+        'comment',
+        'user_id',
+        'channel_id',
+        'category_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

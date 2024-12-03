@@ -14,15 +14,12 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('comment');
-            $table->string('comment');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('channel_id');
-            $table->unsignedBigInteger('category_id');
+            $table->string('url');
+            $table->string('comment')->nullable();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('channel_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('channel_id')->references('id')->on('channels');
-            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
